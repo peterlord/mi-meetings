@@ -9,7 +9,7 @@ import { FormControl } from 'react-bootstrap';
 
 
 const MeetingForm = (props) => {
-   const {fields: {meetingLength, attendee, noOfAttendees}, handleSubmit, onAddMeeting } = props;
+   const {fields: {meetingLength, attendees, noOfAttendees}, handleSubmit, onAddMeeting, meeting} = props;
 
    return (
        <Form horizontal onSubmit={handleSubmit((values) => onAddMeeting(values))}>
@@ -21,17 +21,40 @@ const MeetingForm = (props) => {
 			        <FormControl type="number" placeholder="45" {...meetingLength}/>
 			      </Col>
 			</FormGroup>
-			<FormGroup controlId="formHorizontalEmail">
-			      <Col componentClass={ControlLabel} sm={2}>
-			        Attendee role
-			      </Col>
-			      <Col sm={3}>
-			        <FormControl type="text" placeholder="Engineer" {...attendee}/>
-			      </Col>
-			      <Col sm={1}>
-			        <FormControl type="text" placeholder="no." {...noOfAttendees}/>
-			      </Col>
-			</FormGroup>
+
+			{
+				attendees.map((attendee, index) => {
+					return (
+						<FormGroup controlId="formHorizontalEmail" key={index}>
+					      <Col componentClass={ControlLabel} sm={2}>
+					        Attendee role
+					      </Col>
+					      <Col sm={3}>
+					      <FormControl componentClass="select"
+				              {...attendee.role}
+				              value={attendee.role.value || ''}>
+				              <option></option>
+				              <option value="1">Engineering</option>
+				              <option value="2">Sales</option>
+				          </FormControl>
+					      </Col>
+					      <Col sm={1}>
+					        <FormControl type="text" placeholder="no." {...attendee.count}/>
+					      </Col>
+					      <button type="button" onClick={() => {
+			                attendees.removeField(index)  // remove from index
+			              }}><i/> Remove
+			              </button>
+						</FormGroup>
+					)
+				})
+			}
+
+			<button type="button" onClick={() => {
+	            attendees.addField()}}>
+          		Add
+          	</button>
+			
 			<FormGroup>
 		      <Col smOffset={2} sm={10}>
 		        <Button type="submit">Show me cost</Button>
@@ -43,5 +66,5 @@ const MeetingForm = (props) => {
 
 export default reduxForm({
 	form: 'MeetingForm',
-	fields: ['meetingLength', 'attendee']
+	fields: ['meetingLength', 'attendees[].role', 'attendees[].count', 'attendees[].role']
 })(MeetingForm);

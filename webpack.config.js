@@ -8,7 +8,7 @@ module.exports = {
     output: {
         path: __dirname,
         publicPath: '/',
-        filename: 'app/bundle.js'
+        filename: 'bundle.js'
     },
     devtool: '#source-map',
     plugins: [

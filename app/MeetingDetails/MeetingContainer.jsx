@@ -2,9 +2,10 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import MeetingForm from './MeetingForm.jsx';
 import MeetingCost from './MeetingCost.jsx';
-import addMeetingAction from './addMeetingAction.js';
+import updateAttendeesAction from './updateAttendeesAction.js';
 import showCostsAction from './showCostsAction.js';
 import costUpdatedAction from './costUpdatedAction.js';
+import updateMeetingLengthAction from './updateMeetingLengthAction.js';
 import { hashHistory } from 'react-router';
 
 class MeetingContainer extends React.Component {
@@ -28,14 +29,20 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch){
 	return {
-		onAddMeeting: (meeting) => {
-			dispatch(addMeetingAction(meeting));
-			dispatch(costUpdatedAction(calculateCosts(meeting)));
-			dispatch(showCostsAction(true));
+		onAddMeeting: (values) => {
+			dispatch(updateAttendeesAction(values.attendees));
+			dispatch(updateMeetingLengthAction(values.meetingLength));
+			calculateMeetingCost(dispatch);
 
 			//hashHistory.push('/chat');
 		},
 	}
+}
+
+function calculateMeetingCost(dispatch){
+
+	dispatch(costUpdatedAction(calculateCosts()));
+	dispatch(showCostsAction(true));
 }
 
 function calculateCosts(meeting){
