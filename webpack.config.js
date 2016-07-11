@@ -1,5 +1,5 @@
-var webpack = require('webpack');
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
     entry: [
@@ -8,7 +8,7 @@ module.exports = {
     output: {
         path: __dirname,
         publicPath: '/',
-        filename: 'bundle.js'
+        filename: 'app/bundle.js'
     },
     devtool: '#source-map',
     plugins: [
