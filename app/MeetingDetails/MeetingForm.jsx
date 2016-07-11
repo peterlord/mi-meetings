@@ -9,16 +9,27 @@ import { FormControl } from 'react-bootstrap';
 
 
 const MeetingForm = (props) => {
-   const {fields: {meetingLength}, handleSubmit, onAddMeeting } = props;
+   const {fields: {meetingLength, attendee, noOfAttendees}, handleSubmit, onAddMeeting } = props;
 
    return (
-       <Form onSubmit={handleSubmit((values) => onAddMeeting(values))}>
+       <Form horizontal onSubmit={handleSubmit((values) => onAddMeeting(values))}>
        		<FormGroup controlId="formHorizontalEmail">
 			      <Col componentClass={ControlLabel} sm={2}>
 			        Meeting Length (mins)
 			      </Col>
 			      <Col sm={2}>
 			        <FormControl type="number" placeholder="45" {...meetingLength}/>
+			      </Col>
+			</FormGroup>
+			<FormGroup controlId="formHorizontalEmail">
+			      <Col componentClass={ControlLabel} sm={2}>
+			        Attendee role
+			      </Col>
+			      <Col sm={3}>
+			        <FormControl type="text" placeholder="Engineer" {...attendee}/>
+			      </Col>
+			      <Col sm={1}>
+			        <FormControl type="text" placeholder="no." {...noOfAttendees}/>
 			      </Col>
 			</FormGroup>
 			<FormGroup>
@@ -32,5 +43,5 @@ const MeetingForm = (props) => {
 
 export default reduxForm({
 	form: 'MeetingForm',
-	fields: ['meetingLength']
+	fields: ['meetingLength', 'attendee']
 })(MeetingForm);

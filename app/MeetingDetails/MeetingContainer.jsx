@@ -4,6 +4,7 @@ import MeetingForm from './MeetingForm.jsx';
 import MeetingCost from './MeetingCost.jsx';
 import addMeetingAction from './addMeetingAction.js';
 import showCostsAction from './showCostsAction.js';
+import costUpdatedAction from './costUpdatedAction.js';
 import { hashHistory } from 'react-router';
 
 class MeetingContainer extends React.Component {
@@ -13,8 +14,8 @@ class MeetingContainer extends React.Component {
     }
     render() {
         return <div>
-        	<MeetingForm {...this.props} />
         	{ this.props.meeting.showCosts ? <MeetingCost {...this.props} /> : null }
+        	<MeetingForm {...this.props} />
         </div>;
     }
 }
@@ -29,11 +30,17 @@ function mapDispatchToProps(dispatch){
 	return {
 		onAddMeeting: (meeting) => {
 			dispatch(addMeetingAction(meeting));
+			dispatch(costUpdatedAction(calculateCosts(meeting)));
 			dispatch(showCostsAction(true));
 
 			//hashHistory.push('/chat');
 		},
 	}
+}
+
+function calculateCosts(meeting){
+
+	return 1000;
 }
 
 export default MeetingContainer = connect(mapStateToProps, mapDispatchToProps)(MeetingContainer);

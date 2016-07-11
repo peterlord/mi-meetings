@@ -9,7 +9,7 @@ export default (props) => {
    	<Navbar>
 	   	<Navbar.Header>
 	      <Navbar.Brand>
-	        <a href="#">Meeting Cost Calculator</a>
+	        <a href="#">MI Meeting Calculator</a>
 	      </Navbar.Brand>
 	    </Navbar.Header>
    	</Navbar>
