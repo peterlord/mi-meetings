@@ -1,21 +1,18 @@
 import { ADD_MEETING } from './updateAttendeesAction';
-import { COSTS_UPDATED } from './costUpdatedAction'
+import { COSTS_UPDATED } from './costUpdatedAction';
+import calculateCost from './calculateCost';
 
 const initialState = {
 	showCosts: false,
-	attendees: [{
-		id: 1,
-		role: "Engineer",
-		count: 1
-	}],
+	attendees: [],
 	roles: [
 	{
-		id: 1,
+		id: 0,
 		role: "Engineer",
 		salary: 30000
 	},
 	{
-		id: 2,
+		id: 1,
 		role: "Sales",
 		salary: 30000
 	}]
@@ -42,11 +39,13 @@ function meetingReducer (state = initialState, action) {
 		case 'COSTS_UPDATED':
 			return {
 				...state,
-				cost: action.cost
+				cost: calculateCost(state)
 			}
 		default: 
 			return state;
 	}
 }
+
+
 
 export default meetingReducer;

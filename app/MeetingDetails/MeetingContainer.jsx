@@ -45,7 +45,7 @@ function calculateMeetingCost(dispatch){
 	dispatch(showCostsAction(true));
 }
 
-function calculateCosts(meeting){
+function calculateCosts(){
 
 	return 1000;
 }

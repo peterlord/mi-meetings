@@ -34,8 +34,8 @@ const MeetingForm = (props) => {
 				              {...attendee.role}
 				              value={attendee.role.value || ''}>
 				              <option></option>
-				              <option value="1">Engineering</option>
-				              <option value="2">Sales</option>
+				              <option value="0">Engineering</option>
+				              <option value="1">Sales</option>
 				          </FormControl>
 					      </Col>
 					      <Col sm={1}>
