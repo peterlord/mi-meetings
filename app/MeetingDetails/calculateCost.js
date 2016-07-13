@@ -6,7 +6,8 @@ function calculateCost(meeting){
 		})
 		.reduce((a,b) => a + b, 0);
 
-	return (annualSalaryCombined / 365 * 8 * 60) * meeting.meetingLength;
+	var costPerHour = annualSalaryCombined / (228 * 8);
+	return (costPerHour * (meeting.meetingLength / 60));
 }
 
 export default calculateCost;

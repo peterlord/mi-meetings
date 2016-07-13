@@ -18,6 +18,7 @@ import { reducer as formReducer } from 'redux-form';
 import userReducer from './Login/userReducer';
 import isAuthenticated from './Login/isAuthenticated';
 import MeetingContainer from './MeetingDetails/MeetingContainer.jsx';
+import IncrementContainer from './Increment/IncrementContainer.jsx';
 
 var reducers = {
     messages: messagesReducer,
@@ -54,6 +55,8 @@ render(
                <Route path="/login" component={LoginContainer} />
                <Route path="/chat" component={MessagesContainer} /*onEnter={checkAuth} *//>
                <Route path="/meeting" component={MeetingContainer} />
+               <Route path="/increment" component={IncrementContainer} />
+
            </Route>
        </Router>
     </Provider>,

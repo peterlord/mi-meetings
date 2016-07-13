@@ -1,5 +1,6 @@
 import { ADD_MEETING } from './updateAttendeesAction';
 import { COSTS_UPDATED } from './costUpdatedAction';
+import { START_MEETING } from './startMeetingAction';
 import calculateCost from './calculateCost';
 
 const initialState = {
@@ -9,14 +10,13 @@ const initialState = {
 	{
 		id: 0,
 		role: "Engineer",
-		salary: 30000
+		salary: 40000
 	},
 	{
 		id: 1,
 		role: "Sales",
-		salary: 30000
+		salary: 35000
 	}]
-
 }
 
 function meetingReducer (state = initialState, action) {
@@ -40,6 +40,11 @@ function meetingReducer (state = initialState, action) {
 			return {
 				...state,
 				cost: calculateCost(state)
+			}
+		case 'START_MEETING':
+			return {
+				...state,
+				started: true
 			}
 		default: 
 			return state;

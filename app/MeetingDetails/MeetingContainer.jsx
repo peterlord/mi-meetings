@@ -6,6 +6,7 @@ import updateAttendeesAction from './updateAttendeesAction.js';
 import showCostsAction from './showCostsAction.js';
 import costUpdatedAction from './costUpdatedAction.js';
 import updateMeetingLengthAction from './updateMeetingLengthAction.js';
+import startMeetingAction from './startMeetingAction.js';
 import { hashHistory } from 'react-router';
 
 class MeetingContainer extends React.Component {
@@ -33,9 +34,11 @@ function mapDispatchToProps(dispatch){
 			dispatch(updateAttendeesAction(values.attendees));
 			dispatch(updateMeetingLengthAction(values.meetingLength));
 			calculateMeetingCost(dispatch);
-
-			//hashHistory.push('/chat');
 		},
+		onStartMeeting: () => {
+			dispatch(startMeetingAction());
+			hashHistory.push('/increment');
+		}
 	}
 }
 
