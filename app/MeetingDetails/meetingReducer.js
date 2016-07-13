@@ -9,14 +9,41 @@ const initialState = {
 	roles: [
 	{
 		id: 0,
-		role: "Engineer",
-		salary: 40000
+		role: "C-level",
+		salary: 100000
 	},
 	{
 		id: 1,
 		role: "Sales",
 		salary: 35000
-	}]
+	},
+	{
+		id: 2,
+		role: "Operations",
+		salary: 38000
+	},
+	{
+		id: 3,
+		role: "Tech, Data",
+		salary: 65000
+	},
+	{
+		id: 4,
+		role: "Marketing",
+		salary: 30000
+	},
+	{
+		id: 5,
+		role: "Admin and support roles",
+		salary: 29000
+	},
+	{
+		id: 6,
+		role: "Senior leaders",
+		salary: 80000
+	}],
+	minutesElapsed: 0,
+	liveCost: 0,
 }
 
 function meetingReducer (state = initialState, action) {
@@ -44,7 +71,14 @@ function meetingReducer (state = initialState, action) {
 		case 'START_MEETING':
 			return {
 				...state,
-				started: true
+				started: true,
+				minutesElapsed: 0
+			}
+		case 'INCREMENT_MEETING_MINUTES_ACTION':
+			return {
+				...state,
+				minutesElapsed: ++state.minutesElapsed,
+				liveCost: ((state.cost / state.meetingLength) * state.minutesElapsed)
 			}
 		default: 
 			return state;

@@ -34,8 +34,13 @@ const MeetingForm = (props) => {
 				              {...attendee.role}
 				              value={attendee.role.value || ''}>
 				              <option></option>
-				              <option value="0">Engineering</option>
+				              <option value="0">C-level</option>
 				              <option value="1">Sales</option>
+				              <option value="2">Operations</option>
+				              <option value="3">Tech, Data</option>
+				              <option value="4">Marketing</option>
+				              <option value="5">Admin and support roles</option>
+				              <option value="6">Senior leaders</option>
 				          </FormControl>
 					      </Col>
 					      <Col sm={1}>

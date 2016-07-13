@@ -1,0 +1,7 @@
+export const INCREMENT_MEETING_MINUTES_ACTION = 'INCREMENT_MEETING_MINUTES_ACTION';
+
+export default function(){
+	return {
+		type: INCREMENT_MEETING_MINUTES_ACTION,
+	}
+}

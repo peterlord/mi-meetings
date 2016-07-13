@@ -53,7 +53,7 @@ render(
            <Route path="/" component={Layout} >
                <IndexRoute component={MeetingContainer} />
                <Route path="/login" component={LoginContainer} />
-               <Route path="/chat" component={MessagesContainer} /*onEnter={checkAuth} *//>
+               <Route path="/chat" component={MessagesContainer} />
                <Route path="/meeting" component={MeetingContainer} />
                <Route path="/increment" component={IncrementContainer} />
 

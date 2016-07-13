@@ -4,6 +4,7 @@ const Increment = (props) => {
 	return(
 		<div>
 			<p>This is where the meeting cost will be displayed.</p>
+			<p>£{props.meeting.liveCost.toFixed(2)}</p>
         </div>
 	);
 }

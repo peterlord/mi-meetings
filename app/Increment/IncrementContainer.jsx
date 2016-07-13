@@ -2,15 +2,23 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import Increment from './Increment.jsx';
 import { hashHistory } from 'react-router';
+import incrementMeetingMinutesAction from './incrementMeetingMinutesAction.js';
 
 class IncrementContainer extends React.Component {
     constructor(props) {
         super(props);
         this.displayName = 'IncrementContainer';
+       
     }
+
+	componentDidMount() {
+        const { dispatch } = this.props;
+        incrementCounter(dispatch);
+    }
+
     render() {
         return <div>
-        	<Increment />
+        	<Increment {...this.props}/>
         </div>;
     }
 }
@@ -26,4 +34,10 @@ function mapDispatchToProps(dispatch){
 	}
 }
 
-export default IncrementContainer = connect(mapStateToProps, mapDispatchToProps)(IncrementContainer);
+function incrementCounter(dispatch){
+	setInterval(function() {
+    	dispatch(incrementMeetingMinutesAction());
+	}, 60 * 1000);
+}
+
+export default IncrementContainer = connect(mapStateToProps)(IncrementContainer);
