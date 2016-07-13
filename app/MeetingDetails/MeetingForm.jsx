@@ -12,7 +12,7 @@ const MeetingForm = (props) => {
    const {fields: {meetingLength, attendees, noOfAttendees}, handleSubmit, onAddMeeting, meeting} = props;
 
    return (
-       <Form horizontal onSubmit={handleSubmit((values) => onAddMeeting(values))} onChange={handleSubmit((values) => onAddMeeting(values))}>
+       <Form horizontal onSubmit={handleSubmit((values) => onAddMeeting(values))} /*{onChange={handleSubmit((values) => onAddMeeting(values))}}*/>
        		<FormGroup controlId="formHorizontalEmail">
 			      <Col componentClass={ControlLabel} sm={3}>
 			        Meeting Length (mins)
@@ -72,7 +72,7 @@ const MeetingForm = (props) => {
 
 			<FormGroup>
 		      <Col smOffset={8} sm={2}>
-		        <Button className="btn btn-success" class="btn btn-primary" type="submit">Show me cost</Button>
+		        <Button className="btn btn-success" class="btn btn-primary" type="submit">Refresh cost</Button>
 		      </Col>
 		    </FormGroup>
        </Form>

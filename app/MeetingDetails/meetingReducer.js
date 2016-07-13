@@ -79,7 +79,7 @@ function meetingReducer (state = initialState, action) {
 			return {
 				...state,
 				minutesElapsed: ++state.minutesElapsed,
-				liveCost: ((state.cost / state.meetingLength) * state.minutesElapsed)
+				liveCost: ((state.cost / state.meetingLength) * (state.minutesElapsed/60))
 			}
 		default: 
 			return state;

@@ -37,7 +37,7 @@ function mapDispatchToProps(dispatch){
 function incrementCounter(dispatch){
 	setInterval(function() {
     	dispatch(incrementMeetingMinutesAction());
-	}, 60 * 1000);
+	}, 1 * 1000);
 }
 
 export default IncrementContainer = connect(mapStateToProps)(IncrementContainer);
