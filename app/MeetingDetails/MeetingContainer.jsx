@@ -16,8 +16,9 @@ class MeetingContainer extends React.Component {
     }
     render() {
         return <div>
-        	{ this.props.meeting.showCosts ? <MeetingCost {...this.props} /> : null }
         	<MeetingForm {...this.props} />
+        	{ this.props.meeting.showCosts ? <MeetingCost {...this.props} /> : null }
+        	
         </div>;
     }
 }

@@ -12,24 +12,28 @@ const MeetingForm = (props) => {
    const {fields: {meetingLength, attendees, noOfAttendees}, handleSubmit, onAddMeeting, meeting} = props;
 
    return (
-       <Form horizontal onSubmit={handleSubmit((values) => onAddMeeting(values))}>
+       <Form horizontal onSubmit={handleSubmit((values) => onAddMeeting(values))} onChange={handleSubmit((values) => onAddMeeting(values))}>
        		<FormGroup controlId="formHorizontalEmail">
-			      <Col componentClass={ControlLabel} sm={2}>
+			      <Col componentClass={ControlLabel} sm={3}>
 			        Meeting Length (mins)
 			      </Col>
-			      <Col sm={2}>
+			      <Col sm={3}>
 			        <FormControl type="number" placeholder="45" {...meetingLength}/>
 			      </Col>
 			</FormGroup>
 
+			<FormGroup>
+				<Col componentClass={ControlLabel} sm={3}>
+					Attendees
+		        </Col>
+			</FormGroup>
+
 			{
 				attendees.map((attendee, index) => {
+
 					return (
 						<FormGroup controlId="formHorizontalEmail" key={index}>
-					      <Col componentClass={ControlLabel} sm={2}>
-					        Attendee role
-					      </Col>
-					      <Col sm={3}>
+					      <Col smOffset={3} sm={3}>
 					      <FormControl componentClass="select"
 				              {...attendee.role}
 				              value={attendee.role.value || ''}>
@@ -46,23 +50,29 @@ const MeetingForm = (props) => {
 					      <Col sm={1}>
 					        <FormControl type="text" placeholder="no." {...attendee.count}/>
 					      </Col>
-					      <button type="button" onClick={() => {
+					      <Button type="button" onClick={() => {
 			                attendees.removeField(index)  // remove from index
 			              }}><i/> Remove
-			              </button>
+			              </Button>
 						</FormGroup>
 					)
+
 				})
+
 			}
 
-			<button type="button" onClick={() => {
-	            attendees.addField()}}>
-          		Add
-          	</button>
-			
 			<FormGroup>
-		      <Col smOffset={2} sm={10}>
-		        <Button type="submit">Show me cost</Button>
+				<Col smOffset={3} sm={10}>
+					<Button type="button" onClick={() => {
+			            attendees.addField()}}>
+		          		Add more attendees
+		          	</Button>
+		        </Col>
+			</FormGroup>
+
+			<FormGroup>
+		      <Col smOffset={8} sm={2}>
+		        <Button className="btn btn-success" class="btn btn-primary" type="submit">Show me cost</Button>
 		      </Col>
 		    </FormGroup>
        </Form>

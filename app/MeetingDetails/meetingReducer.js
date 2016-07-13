@@ -44,6 +44,7 @@ const initialState = {
 	}],
 	minutesElapsed: 0,
 	liveCost: 0,
+	meetingLength: 45
 }
 
 function meetingReducer (state = initialState, action) {
